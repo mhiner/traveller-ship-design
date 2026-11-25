@@ -1,0 +1,201 @@
+/* The blueprint tab sits on the Mongoose actor sheet. Match its panels, titles, and type. */
+
+.window-app.mgt2 .blueprint-mount {
+  --bg: transparent;
+  --panel: #c5c3b4;
+  --panel-2: #b7b5a6;
+  --ink: #1a1a1a;
+  --muted: #3f3c36;
+  --line: #8a887c;
+  --accent: var(--title-bg, #f1511b);
+  --accent-ink: #ffffff;
+  --good: #1d6b32;
+  --bad: #a32020;
+  --font: "Roboto", sans-serif;
+  --display: "Roboto", sans-serif;
+  background: transparent;
+  color: #1a1a1a;
+  color-scheme: light;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+  min-height: 0;
+}
+
+.window-app.mgt2 .blueprint-mount h1,
+.window-app.mgt2 .blueprint-mount h2,
+.window-app.mgt2 .blueprint-mount details.panel > summary {
+  font-family: "Roboto", sans-serif;
+  color: #1a1a1a;
+}
+
+.window-app.mgt2 .blueprint-mount .panel {
+  background: var(--panel-bg, #c5c3b4e0);
+  color: #1a1a1a;
+  border: 2px solid var(--title-bg, #f1511b);
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px #202020;
+}
+
+.window-app.mgt2 .blueprint-mount details.panel > summary {
+  background: var(--title-bg, #f1511b);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  margin: -1rem -1rem 0.75rem;
+  border-radius: 3px 3px 0 0;
+}
+
+.window-app.mgt2 .blueprint-mount details.panel > summary::marker {
+  color: white;
+}
+
+.window-app.mgt2 .blueprint-mount details.panel > summary .section-values {
+  color: white;
+}
+
+.window-app.mgt2 .blueprint-mount .ship-title h2 {
+  color: var(--title-bg, #f1511b);
+  font-size: 1.25rem;
+}
+
+.window-app.mgt2 .blueprint-mount input,
+.window-app.mgt2 .blueprint-mount select,
+.window-app.mgt2 .blueprint-mount textarea,
+.window-app.mgt2 .blueprint-mount .design-description textarea {
+  background: rgba(255, 255, 255, 0.72);
+  color: #1a1a1a;
+  border: 1px solid #8a887c;
+  border-radius: 3px;
+  min-height: 1.5rem;
+}
+
+.window-app.mgt2 .blueprint-mount input[type="checkbox"] {
+  accent-color: var(--title-bg, #f1511b);
+  min-height: 0;
+  width: auto;
+  background: transparent;
+}
+
+.window-app.mgt2 .blueprint-mount button,
+.window-app.mgt2 .blueprint-mount label.file-button {
+  background: #f4f1e8;
+  color: #1a1a1a;
+  border: 1px solid var(--title-bg, #f1511b);
+  border-radius: 3px;
+  font-family: "Roboto", sans-serif;
+}
+
+.window-app.mgt2 .blueprint-mount button:hover,
+.window-app.mgt2 .blueprint-mount label.file-button:hover {
+  background: var(--title-bg, #f1511b);
+  color: white;
+  border-color: var(--title-bg, #f1511b);
+}
+
+.window-app.mgt2 .blueprint-mount button.edit-field,
+.window-app.mgt2 .blueprint-mount button.description-toggle,
+.window-app.mgt2 .blueprint-mount button.sheet-view-link {
+  background: transparent;
+  border: 0;
+  color: #3f3c36;
+  min-height: 0;
+}
+
+.window-app.mgt2 .blueprint-mount button.edit-field:hover,
+.window-app.mgt2 .blueprint-mount button.description-toggle:hover,
+.window-app.mgt2 .blueprint-mount button.sheet-view-link:hover {
+  background: transparent;
+  color: var(--title-bg, #f1511b);
+  border-color: transparent;
+}
+
+.window-app.mgt2 .blueprint-mount .sheet-collapse {
+  background: var(--title-bg, #f1511b);
+  color: white;
+  border-color: var(--title-bg, #f1511b);
+}
+
+.window-app.mgt2 .blueprint-mount .sheet-collapse:hover {
+  background: #c43d12;
+  color: white;
+}
+
+.window-app.mgt2 .blueprint-mount th,
+.window-app.mgt2 .blueprint-mount td {
+  border-bottom-color: #8a887c;
+}
+
+.window-app.mgt2 .blueprint-mount th {
+  color: #3f3c36;
+}
+
+.window-app.mgt2 .blueprint-mount .design-sheet > .sheet-pin {
+  background: var(--panel-bg, #c5c3b4);
+}
+
+.window-app.mgt2 .blueprint-mount .blueprint-filters label.check input {
+  background: #8a887c;
+}
+
+.window-app.mgt2 .blueprint-mount .blueprint-filters label.check input:checked {
+  background: var(--title-bg, #f1511b);
+  border-color: var(--title-bg, #f1511b);
+}
+
+.traveler-blueprint .astrogation-box .astrogation-set,
+.traveler-blueprint .astrogation-box .astrogation-jump,
+.traveler-blueprint .astrogation-box .astrogation-target,
+.traveler-blueprint .astrogation-box .value-box {
+  box-sizing: border-box;
+  display: block;
+  width: calc(100% - 6px);
+  margin: 4px 3px 0;
+}
+
+.traveler-blueprint .berth-summary {
+  margin: 0 0 8px;
+}
+
+.traveler-blueprint .breakaway-status,
+.traveler-blueprint .dock-status {
+  font-size: 0.85em;
+}
+
+.traveler-blueprint .cargo-trade {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 8px;
+}
+
+.market-sheet,
+.market-sheet table.trade-list th,
+.market-sheet table.trade-list td {
+  text-align: left;
+}
+
+.market-sheet table.trade-list th.trade-name {
+  text-align: center;
+}
+
+.market-sheet .market-lot {
+  cursor: grab;
+}
+
+.market-sheet img {
+  vertical-align: middle;
+}
+
+.market-tons p {
+  margin: 0.25rem 0;
+}
+
+.market-tons input {
+  width: 6rem;
+}
+
+.market-tons button {
+  margin-top: 0.75rem;
+}

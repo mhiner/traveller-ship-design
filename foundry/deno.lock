@@ -1,0 +1,30 @@
+{
+  "version": "5",
+  "specifiers": {
+    "npm:idb@^8.0.3": "8.0.4",
+    "npm:preact@^10.29.1": "10.29.8"
+  },
+  "npm": {
+    "idb@8.0.4": {
+      "integrity": "sha512-jd0ITCrN+Zah4J7R/Z2jnR3W7A4BXDAjmo62MwWuSjxCiueUAf7X5rbodEdidWzeknwXHmLpdZkoiiCppNi30Q=="
+    },
+    "preact@10.29.8": {
+      "integrity": "sha512-ej2aVZ+vZ8WO7tvlQWRM9N63A0KzF9q4mWJfDUHgYaIofWY9hu74QdnQrjoPMmZi2/nZ5gN0bJCQF49xQqx09Q=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:idb@^8.0.3",
+      "npm:preact@^10.29.1"
+    ],
+    "links": {
+      "jsr:@traveler/ship-design@0.1.0": {
+        "dependencies": [
+          "jsr:@std/assert@1",
+          "jsr:@std/testing@1",
+          "npm:idb@^8.0.3"
+        ]
+      }
+    }
+  }
+}

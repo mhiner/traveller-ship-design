@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "@traveler/ship-jsx/jsx-runtime": "../src/jsx-runtime.ts",
+    "preact": "npm:preact@^10.29.1",
+    "preact/": "npm:/preact@^10.29.1/",
+    "idb": "npm:idb@^8.0.3"
+  },
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext", "deno.ns"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "@traveler/ship-jsx",
+    "strict": true
+  }
+}

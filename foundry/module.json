@@ -1,0 +1,48 @@
+{
+  "id": "traveller-blueprint",
+  "title": "Koko's Traveller Ship Design",
+  "description": "A Blueprint Ship actor for Mongoose Traveller 2e. The shipyard edits the design, and the sheet keeps the spacecraft hull, drives, and hardware in step with it.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Mike"
+    }
+  ],
+  "esmodules": [
+    "dist/preact.js",
+    "dist/blueprint.js",
+    "module/main.mjs"
+  ],
+  "styles": [
+    "styles/blueprint.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "ship": {}
+    }
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "mgt2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "0.25.0",
+          "verified": "0.25.0"
+        }
+      }
+    ]
+  }
+}

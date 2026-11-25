@@ -1,0 +1,21 @@
+{
+  "TYPES": {
+    "Actor": {
+      "ship": "Blueprint Ship",
+      "traveller-blueprint.ship": "Blueprint Ship"
+    }
+  },
+  "MGT2": {
+    "Spacecraft": {
+      "Hull": {
+        "adjustableHull": "Adjustable Hull (TL12)",
+        "adjustableHull15": "Adjustable Hull (TL15)",
+        "moduleHull": "Module Hull"
+      }
+    }
+  },
+  "TRAVELER_BLUEPRINT": {
+    "Sheet": "Blueprint Ship",
+    "Tab": "Blueprint"
+  }
+}

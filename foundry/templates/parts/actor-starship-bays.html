@@ -1,0 +1,310 @@
+<div class="tab items" data-group="primary" data-tab="bays">
+
+    <div class="grid grid-5col bay-header">
+        <div class="bay-head bay-cargo"><label class="bay-hover{{#if (ifEquals system.spacecraft.baySelected 'cargo')}}-selected{{/if}}">
+            {{localize 'MGT2.TravellerSheet.CargoBay'}}</label>
+        </div>
+        <div class="bay-head bay-ship"><label class="bay-hover{{#if (ifEquals system.spacecraft.baySelected 'ship')}}-selected{{/if}}">
+            {{localize 'MGT2.TravellerSheet.ShipBay'}}</label>
+        </div>
+        <div class="bay-head bay-vehicle"><label class="bay-hover{{#if (ifEquals system.spacecraft.baySelected 'vehicle')}}-selected{{/if}}">
+            {{localize 'MGT2.TravellerSheet.VehicleBay'}}</label>
+        </div>
+        <div class="bay-head bay-module"><label class="bay-hover{{#if (ifEquals system.spacecraft.baySelected 'module')}}-selected{{/if}}">
+            Module Bay</label>
+        </div>
+        <div class="bay-head bay-breakaway"><label class="bay-hover{{#if (ifEquals system.spacecraft.baySelected 'breakaway')}}-selected{{/if}}">
+            Breakaway Hulls</label>
+        </div>
+    </div>
+
+    {{#if (ifEquals system.spacecraft.baySelected "ship")}}
+        <div class="items">
+            {{#if designShipBays}}
+                <ol class="items-list actor-crew-list grid grid-3col">
+                    {{#each designShipBays}}
+                    <li class="actor-crew" {{#if actorId}}data-actor-id="{{actorId}}"{{/if}}>
+                        <h4 title="{{title}}">{{title}}</h4>
+                        {{#if actorId}}
+                            <div class="dock-status">{{status}}</div>
+                            <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{title}}" src="{{img}}"/>
+                            {{dtons}}dt
+                            {{#if mdrive}} / {{mdrive}}G {{/if}}
+                            {{#if jdrive}} / J-{{jdrive}} {{/if}}
+                            <div class="item-controls">
+                                <a class="item-control docked-plus" title="Dock"><i class="fas fa-plus"></i></a>
+                                <a class="item-control docked-minus" title="Launch"><i class="fas fa-minus"></i></a>
+                                <a class="item-control docked-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                            </div>
+                        {{else if empty}}
+                            {{#if span}}
+                            <p>Empty · {{span}} t</p>
+                            <p>Drag a ship of {{span}} tons onto this sheet.</p>
+                            {{else}}
+                            <p>Empty · {{tons}} t</p>
+                            <p>Drag a ship of {{tons}} tons or less onto this sheet.</p>
+                            {{/if}}
+                        {{else}}
+                            <p>{{tons}}dt</p>
+                        {{/if}}
+                    </li>
+                    {{/each}}
+                </ol>
+            {{/if}}
+            {{#if launchedShips}}
+                <ol class="items-list actor-crew-list grid grid-3col">
+                    {{#each launchedShips}}
+                    <li class="actor-crew" data-actor-id="{{actorId}}">
+                        <h4 title="{{name}}">{{name}}</h4>
+                        <div class="dock-status">{{status}}</div>
+                        <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{name}}" src="{{img}}"/>
+                        {{dtons}}dt
+                        <div class="item-controls">
+                            <a class="item-control docked-plus" title="Dock"><i class="fas fa-plus"></i></a>
+                            <a class="item-control docked-minus" title="Launch"><i class="fas fa-minus"></i></a>
+                            <a class="item-control docked-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ol>
+            {{/if}}
+            {{#if unplacedShips}}
+                <ol class="items-list actor-crew-list grid grid-3col">
+                    {{#each unplacedShips}}
+                    <li class="actor-crew" data-actor-id="{{actorId}}">
+                        <h4 title="{{name}}">{{name}} x{{quantity}}</h4>
+                        <div class="dock-status">{{status}}</div>
+                        <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{name}}" src="{{img}}"/>
+                        <p>Does not fit an open docking bay.</p>
+                        <div class="item-controls">
+                            <a class="item-control docked-plus" title="Dock"><i class="fas fa-plus"></i></a>
+                            <a class="item-control docked-minus" title="Launch"><i class="fas fa-minus"></i></a>
+                            <a class="item-control docked-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ol>
+            {{/if}}
+            {{#unless designShipBays}}
+                {{#unless unplacedShips}}
+                    {{#unless launchedShips}}
+                        <p>This design has no docking bays.</p>
+                    {{/unless}}
+                {{/unless}}
+            {{/unless}}
+        </div>
+    {{else if (ifEquals system.spacecraft.baySelected "vehicle")}}
+        <div class="items">
+            {{#if designVehicleBays}}
+                <ol class="items-list actor-crew-list grid grid-3col">
+                    {{#each designVehicleBays}}
+                    <li class="actor-crew" {{#if actorId}}data-actor-id="{{actorId}}"{{/if}}>
+                        <h4 title="{{title}}">{{title}}</h4>
+                        {{#if actorId}}
+                            <div class="dock-status">{{status}}</div>
+                            <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{title}}" src="{{img}}"/>
+                            {{dtons}}dt
+                            <div class="item-controls">
+                                <a class="item-control vehicle-plus" title="Dock"><i class="fas fa-plus"></i></a>
+                                <a class="item-control vehicle-minus" title="Launch"><i class="fas fa-minus"></i></a>
+                                <a class="item-control vehicle-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                            </div>
+                        {{else if empty}}
+                            <p>Empty · {{tons}} t</p>
+                            <p>Drag a vehicle of {{tons}} tons or less onto this sheet.</p>
+                        {{else}}
+                            <p>{{tons}}dt</p>
+                        {{/if}}
+                    </li>
+                    {{/each}}
+                </ol>
+            {{/if}}
+            {{#if launchedVehicles}}
+                <ol class="items-list actor-crew-list grid grid-3col">
+                    {{#each launchedVehicles}}
+                    <li class="actor-crew" data-actor-id="{{actorId}}">
+                        <h4 title="{{name}}">{{name}}</h4>
+                        <div class="dock-status">{{status}}</div>
+                        <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{name}}" src="{{img}}"/>
+                        {{dtons}}dt
+                        <div class="item-controls">
+                            <a class="item-control vehicle-plus" title="Dock"><i class="fas fa-plus"></i></a>
+                            <a class="item-control vehicle-minus" title="Launch"><i class="fas fa-minus"></i></a>
+                            <a class="item-control vehicle-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ol>
+            {{/if}}
+            {{#if unplacedVehicles}}
+                <ol class="items-list actor-crew-list grid grid-3col">
+                    {{#each unplacedVehicles}}
+                    <li class="actor-crew" data-actor-id="{{actorId}}">
+                        <h4 title="{{name}}">{{name}} x{{quantity}}</h4>
+                        <div class="dock-status">{{status}}</div>
+                        <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{name}}" src="{{img}}"/>
+                        <p>Does not fit an open vehicle bay.</p>
+                        <div class="item-controls">
+                            <a class="item-control vehicle-plus" title="Dock"><i class="fas fa-plus"></i></a>
+                            <a class="item-control vehicle-minus" title="Launch"><i class="fas fa-minus"></i></a>
+                            <a class="item-control vehicle-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ol>
+            {{/if}}
+            {{#unless designVehicleBays}}
+                {{#unless unplacedVehicles}}
+                    {{#unless launchedVehicles}}
+                        <p>This design has no vehicle bays.</p>
+                    {{/unless}}
+                {{/unless}}
+            {{/unless}}
+        </div>
+    {{else if (ifEquals system.spacecraft.baySelected "module")}}
+        <div class="items">
+            {{#if moduleBay.open}}
+                {{#if moduleBay.cards}}
+                    <ol class="items-list actor-crew-list grid grid-3col">
+                        {{#each moduleBay.cards}}
+                        <li class="actor-crew" {{#if actorId}}data-actor-id="{{actorId}}"{{/if}}>
+                            <h4 title="{{title}}">{{title}}</h4>
+                            {{#if actorId}}
+                                <div class="dock-status">{{status}}</div>
+                                <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{title}}" src="{{img}}"/>
+                                {{tons}}dt
+                                <div class="item-controls">
+                                    <a class="item-control module-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                                </div>
+                            {{else if empty}}
+                                <p>Empty · {{tons}} t</p>
+                                <p>Drag a module of {{tons}} tons onto this sheet.</p>
+                            {{/if}}
+                        </li>
+                        {{/each}}
+                    </ol>
+                {{/if}}
+                {{#if moduleBay.unplaced}}
+                    <ol class="items-list actor-crew-list grid grid-3col">
+                        {{#each moduleBay.unplaced}}
+                        <li class="actor-crew" data-actor-id="{{actorId}}">
+                            <h4 title="{{name}}">{{name}} x{{quantity}}</h4>
+                            <div class="dock-status">Attached</div>
+                            <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{name}}" src="{{img}}"/>
+                            <p>Does not match an open module bay.</p>
+                            <div class="item-controls">
+                                <a class="item-control module-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ol>
+                {{/if}}
+            {{else}}
+                <p>This design has no module bay.</p>
+            {{/if}}
+        </div>
+    {{else if (ifEquals system.spacecraft.baySelected "breakaway")}}
+        <div class="items">
+            {{#if breakawayBay.open}}
+                {{#if breakawayBay.hasCards}}
+                    <p>Attached hulls operate as one ship. {{breakawayBay.tons}} t joined.</p>
+                    <ol class="items-list actor-crew-list grid grid-3col">
+                        {{#each breakawayBay.cards}}
+                        <li class="actor-crew" data-actor-id="{{actorId}}">
+                            <h4 title="{{name}}">{{name}}</h4>
+                            <div class="breakaway-status">{{status}}</div>
+                            <img class="embedded-actor-portrait actor-draggable" data-actor-id="{{actorId}}" title="{{name}}" src="{{img}}"/>
+                            {{tons}}dt
+                            <div class="item-controls">
+                                <a class="item-control breakaway-plus" title="Attach"><i class="fas fa-plus"></i></a>
+                                <a class="item-control breakaway-minus" title="Detach"><i class="fas fa-minus"></i></a>
+                                <a class="item-control breakaway-delete" title="Remove from list"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ol>
+                {{else}}
+                    <p>Drag another breakaway hull onto this sheet.</p>
+                {{/if}}
+            {{else}}
+                <p>This design has no breakaway hull.</p>
+            {{/if}}
+        </div>
+    {{else}}
+        <div class="items">
+            <div class="grid grid-3col">
+                {{#if system.finance }}
+                    <div class="resource flex-group-center">
+                        <label class="field-label">{{localize 'MGT2.Finance.Cash'}}</label>
+                        <input class="field-value" name="system.finance.cash" type="text" value="{{system.finance.cash}}"/>
+                    </div>
+                    <div></div><div></div>
+                {{else}}
+                    <div><span class="add-finance-data">+{{localize 'MGT2.TravellerSheet.AddFinance'}}</span></div>
+                    <div></div>
+                    <div></div>
+                {{/if}}
+                {{#each cargoSpaces}}
+                <div class="resource flex-group-center">
+                    <label class="field-label">{{name}}</label>
+                    <input class="field-value" type="text" value="{{capacity}}dt" readonly/>
+                </div>
+                <div class="resource flex-group-center">
+                    <label class="field-label">{{localize 'MGT2.TravellerSheet.CargoUsed'}}</label>
+                    <input class="field-value" type="text" value="{{used}}dt" readonly/>
+                </div>
+                <div class="resource flex-group-center">
+                    <label class="field-label">{{localize 'MGT2.TravellerSheet.CargoRemaining'}}</label>
+                    <input class="field-value" type="text" value="{{remaining}}dt" readonly/>
+                </div>
+                {{/each}}
+            </div>
+
+            {{#if cargo}}
+                <ol class="items-list actor-items grid grid-3col">
+                    {{#each cargo as |item id|}}
+                    <li class="item item-gear ship-cargo" data-item-id="{{item._id}}">
+                        <h4 title="{{nameQuantity item}}">{{nameQuantity item}}</h4>
+                        <img title="{{nameQuantity item}}" src="{{item.img}}"/>
+                        {{#if item.system.cargo.destinationName}}
+                            <b>{{localize 'MGT2.TravellerSheet.FreightDetails'}}</b><br/>
+                            <span>{{item.system.cargo.destinationName}}</span>
+                            <br/>
+                            <span>Cr{{niceNumber item.system.cargo.price}}/t</span>
+                        {{else}}
+                            <b>{{localize 'MGT2.TravellerSheet.SpeculativeDetails'}}</b><br/>
+                            {{#if item.system.cargo.sourceName}}
+                                <span>{{item.system.cargo.sourceName}}</span>
+                                <br/>
+                            {{/if}}
+                            {{#if item.system.cost includeZero=false}}
+                                <span>Cr{{niceNumber item.system.cost}}/t</span>
+                                <br/>
+                            {{/if}}
+                        {{/if}}
+                        {{#if showHold}}
+                            <label>Stowed in
+                                <select class="cargo-hold" data-item-id="{{item._id}}">
+                                    {{#each holdChoices}}
+                                        <option value="{{key}}" {{#if selected}}selected{{/if}}>{{name}}</option>
+                                    {{/each}}
+                                </select>
+                            </label>
+                        {{/if}}
+                        <div class="item-controls">
+                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ol>
+            {{else}}
+                <p>{{localize 'MGT2.TravellerSheet.DragCargo'}}</p>
+            {{/if}}
+            <div class="cargo-trade">
+                <button type="button" class="market-open">Market</button>
+                <button type="button" class="freight-open">Freight and Mail</button>
+            </div>
+        </div>
+    {{/if}}
+</div>

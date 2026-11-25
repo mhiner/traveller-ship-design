@@ -1,0 +1,28 @@
+<form class="traveler-blueprint market-sheet">
+    <h3>{{place}}</h3>
+    {{#if empty}}
+        <p>This market has no goods.</p>
+    {{else}}
+        <table class="trade-list items-list">
+            <tr class="trade-list-header">
+                <th class="trade-name">Trade Good</th>
+                <th>Quantity</th>
+                <th>Buy (Cr)</th>
+                <th>+/-</th>
+                <th>Sell (Cr)</th>
+                <th>+/-</th>
+            </tr>
+            {{#each lots}}
+                <tr class="market-lot" data-lot-id="{{id}}">
+                    <td><img src="{{img}}" width="24" height="24"/> {{name}}</td>
+                    <td>{{#if tons includeZero=false}}{{tons}}{{else}}-{{/if}}</td>
+                    <td>{{#if tons includeZero=false}}{{purchasePerTon}}{{else}}-{{/if}}</td>
+                    <td>{{#if tons includeZero=false}}{{purchaseDiff}}{{else}}-{{/if}}</td>
+                    <td>{{salePerTon}}</td>
+                    <td>{{saleDiff}}</td>
+                </tr>
+            {{/each}}
+        </table>
+        <p>Drag a good onto the ship to buy it, or drag ship cargo here to sell it. You choose how many tons.</p>
+    {{/if}}
+</form>

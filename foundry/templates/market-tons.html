@@ -1,0 +1,11 @@
+<form class="traveler-blueprint market-tons">
+    <p><b>{{name}}</b></p>
+    <p>{{priceLabel}}: Cr{{price}} / t</p>
+    <p>{{detail}}</p>
+    <p>You can {{verb}} at most {{max}} t.</p>
+    <label>Tons
+        <input class="market-tons-input" type="number" min="1" max="{{max}}" step="1" value="{{max}}"/>
+    </label>
+    <p>Total: Cr<span class="market-tons-sum">{{total}}</span></p>
+    <button type="submit">{{verb}}</button>
+</form>

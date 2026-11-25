@@ -1,0 +1,33 @@
+{
+  "name": "@traveler/ship-design",
+  "version": "0.1.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./styles.css": "./styles.css"
+  },
+  "imports": {
+    "@traveler/ship-jsx/jsx-runtime": "./src/jsx-runtime.ts",
+    "idb": "npm:idb@^8.0.3",
+    "@std/assert": "jsr:@std/assert@^1",
+    "@std/testing/bdd": "jsr:@std/testing@^1/bdd"
+  },
+  "tasks": {
+    "dev": "deno run -A dev/serve.ts",
+    "foundry": "deno run -A foundry/build.ts",
+    "foundry-release": "deno run -A foundry/release.ts"
+  },
+  "publish": {
+    "exclude": ["dev/**", "foundry/**"]
+  },
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "deno.ns"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "@traveler/ship-jsx",
+    "strict": true
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  }
+}

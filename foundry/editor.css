@@ -1,0 +1,61 @@
+.split.sheet-closed:has(.design-sheets) {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.split.sheet-closed .design-sheets {
+  position: sticky;
+  top: 0.5rem;
+  height: auto;
+  width: auto;
+  overflow: visible;
+}
+
+.sheet-collapse {
+  flex: 0 0 auto;
+  align-self: start;
+  width: auto;
+  min-height: 1.5rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.split.sheet-closed .sheet-collapse {
+  writing-mode: vertical-rl;
+  min-height: 7rem;
+  width: 1.7rem;
+  padding: 0.55rem 0.1rem;
+}
+
+.ship-file-actions {
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+}
+
+.ship-file-actions > button,
+.ship-file-actions > label.file-button {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 1.5rem;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  border-radius: 4px;
+}
+
+@media (max-width: 800px) {
+  .split.sheet-closed:has(.design-sheets) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .split.sheet-closed:has(.design-sheets) {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .split.sheet-closed .design-sheets {
+    position: sticky;
+    height: auto;
+    overflow: visible;
+  }
+}

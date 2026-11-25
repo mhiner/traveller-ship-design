@@ -1,0 +1,27 @@
+<form class="traveler-blueprint market-sheet">
+    <h3>{{origin}} to {{destination}}</h3>
+    {{#if parsecs}}
+        <p>{{parsecs}} parsecs. The fee is paid on arrival.</p>
+    {{/if}}
+    {{#if empty}}
+        <p>No freight or mail on this route.</p>
+    {{else}}
+        <table class="trade-list items-list">
+            <tr class="trade-list-header">
+                <th class="trade-name">Lot</th>
+                <th>Tons</th>
+                <th>Cr/t</th>
+                <th>Fee</th>
+            </tr>
+            {{#each lots}}
+                <tr class="market-lot" data-lot-id="{{id}}">
+                    <td>{{name}}</td>
+                    <td>{{tons}}</td>
+                    <td>{{pricePerTon}}</td>
+                    <td>{{fee}}</td>
+                </tr>
+            {{/each}}
+        </table>
+        <p>Drag a lot onto the ship to take all of it. Drag it back here to return it.</p>
+    {{/if}}
+</form>

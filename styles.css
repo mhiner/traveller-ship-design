@@ -1,0 +1,388 @@
+/* Shipyard presentation. Tokens such as --ink, --line, --accent, and --panel come from the host. */
+
+.design-form > details.panel > summary .section-values {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.design-form > details.panel[open] > summary .section-values {
+  display: none;
+}
+
+details.panel details.panel { margin-top: 0.75rem; }
+
+.weapon-mount {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.weapon-mount .row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: end;
+  margin-bottom: 0.75rem;
+}
+
+.weapon-mount .row label { flex: 1; }
+.weapon-mount > button { margin-bottom: 0.25rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.drive-fields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.drive-fields label > span { white-space: normal; }
+
+.fuel-containers {
+  display: grid;
+  grid-template-rows: subgrid;
+  min-width: 0;
+}
+
+.fuel-containers .container-title {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.fuel-containers button.container-toggle {
+  width: 1.4rem;
+  height: 1.4rem;
+  min-height: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 1rem;
+}
+
+.drive-custom {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto minmax(1.25rem, auto) auto;
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+  align-items: start;
+}
+
+.drive-column {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  align-items: start;
+}
+
+.drive-custom h3 { margin: 0; font-size: 1rem; }
+.drive-column .meta { margin: 0; min-height: 1.25rem; }
+.custom-list { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+.custom-list label.check { justify-content: flex-start; width: auto; text-align: left; }
+.custom-list label.check input { width: 1rem; height: 1rem; min-height: 0; margin: 0; padding: 0; flex: 0 0 auto; }
+.custom-list label.check input[type="number"] { width: 3.25rem; height: auto; padding: 0.15rem 0.3rem; text-align: center; }
+.custom-note { font-size: 0.85em; font-weight: 400; }
+
+.weapon-custom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.weapon-custom + .weapon-custom { margin-top: 1rem; }
+
+.custom-column {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.custom-column h3 { margin: 0; min-height: 2.6rem; font-size: 1rem; }
+.custom-column .meta { margin: 0; min-height: 1.25rem; }
+
+@media (max-width: 700px) {
+  .drive-custom { grid-template-columns: 1fr; grid-template-rows: none; }
+  .drive-column { display: flex; flex-direction: column; gap: 0.5rem; grid-row: auto; }
+  .weapon-custom { grid-template-columns: 1fr; }
+}
+
+.grid + .grid { margin-top: 0.75rem; }
+
+.ship-title { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem 1.25rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.ship-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem 1.1rem; min-width: 0; flex: 1 1 auto; }
+.ship-title > label.check { flex: 0 0 auto; margin-left: auto; white-space: nowrap; }
+.ship-title > label.check input { width: auto; flex: none; min-height: 0; }
+.ship-title h2 { display: inline-flex; align-items: center; gap: 0.35rem; margin: 0; }
+.ship-title h2 input {
+  width: 14rem;
+  max-width: 100%;
+  min-height: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0 0 0.05rem;
+}
+.ship-title-field { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--ink); font-size: 0.95rem; }
+.ship-title-label { color: var(--muted); }
+.ship-title-field select,
+.ship-title-field input { width: auto; min-height: 0; padding: 0.15rem 0.4rem; }
+.ship-title-field input { width: 4.5rem; }
+.design-description { margin-top: 0.75rem; }
+.description-head { display: flex; align-items: center; gap: 0.35rem; }
+.design-description .description-toggle {
+  min-height: 0;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.design-description .description-toggle:hover { color: var(--ink); border-color: transparent; }
+.design-description textarea {
+  display: block;
+  width: 100%;
+  min-height: 6rem;
+  margin-top: 0.25rem;
+  background: #0e141b;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+
+.design-list { margin-top: 1rem; }
+
+.blueprint-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1.25rem 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.blueprint-title {
+  position: relative;
+  font-family: var(--display);
+  font-size: 1.35rem;
+  color: var(--ink);
+  line-height: 2.4rem;
+}
+
+.blueprint-filters {
+  display: contents;
+  cursor: default;
+  font-family: var(--font);
+  font-size: 0.85rem;
+}
+
+.blueprint-filters label { width: auto; }
+.blueprint-filters input:not([type="checkbox"]) { width: 7.5rem; }
+.blueprint-filters label.check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.4rem;
+  color: var(--ink);
+}
+.blueprint-filters label.check input {
+  appearance: none;
+  width: 2.1rem;
+  height: 1.15rem;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--panel);
+  position: relative;
+  flex: 0 0 auto;
+}
+.blueprint-filters label.check input::after {
+  content: "";
+  position: absolute;
+  top: 0.1rem;
+  left: 0.12rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--muted);
+}
+.blueprint-filters label.check input:checked { background: var(--accent); border-color: var(--accent); }
+.blueprint-filters label.check input:checked::after { left: calc(100% - 0.97rem); background: var(--accent-ink); }
+
+.design-actions button[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.design-list .blueprint-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.design-list .blueprint-row > button:first-child {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
+  text-align: left;
+}
+
+.design-list .blueprint-row > button:last-child:not(:first-child) {
+  flex: 0 0 auto;
+  width: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.custom-brain > summary { font-size: 1.05rem; margin-bottom: 0; }
+.custom-brain[open] > summary { margin-bottom: 0.75rem; }
+.custom-brain h3 { margin: 0.85rem 0 0.35rem; font-size: 1rem; }
+.custom-brain table input { width: 4.5rem; }
+
+.design-sheet .sheet-computer,
+.design-sheet .sheet-hull,
+.design-sheet .sheet-brain,
+.design-sheet .sheet-dock,
+.design-sheet .sheet-turret,
+.design-sheet .sheet-robotics { cursor: pointer; }
+
+.design-sheet .sheet-computer:hover td:first-child,
+.design-sheet .sheet-hull:hover td:first-child,
+.design-sheet .sheet-brain:hover td:first-child,
+.design-sheet .sheet-dock:hover td:first-child,
+.design-sheet .sheet-turret:hover td:first-child,
+.design-sheet .sheet-robotics:hover td:first-child { color: var(--accent); }
+
+.design-sheet .sheet-fold {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.design-sheet .sheet-software-row td:first-child,
+.design-sheet .sheet-hull-row td:first-child,
+.design-sheet .sheet-brain-row td:first-child,
+.design-sheet .sheet-dock-row td:first-child,
+.design-sheet .sheet-turret-row td:first-child,
+.design-sheet .sheet-robotics-row td:first-child {
+  padding-left: calc(0.45rem + 3ch);
+}
+.split > .panel { margin-bottom: 0; }
+
+.design-sheets {
+  position: sticky;
+  top: 1rem;
+  height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.design-sheets > .design-sheet {
+  margin-bottom: 0;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.design-sheet {
+  flex: 0 0 auto;
+  min-height: 0;
+}
+
+.design-sheet > .sheet-pin {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--panel);
+  padding-bottom: 0.75rem;
+}
+
+.design-sheet > .sheet-heading,
+.sheet-pin > .sheet-heading {
+  margin: 0;
+}
+
+.sheet-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sheet-heading h2 {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sheet-hull-points {
+  margin: 0 0 0 auto;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.sheet-view-link {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.2;
+  min-height: 0;
+  cursor: pointer;
+}
+
+.sheet-view-link:hover { color: var(--accent); }
+
+.sheet-views {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.75rem 0 0;
+}
+
+.sheet-views button {
+  width: auto;
+  min-height: 1.8rem;
+  padding: 0.2rem 0.7rem;
+}
+
+.sheet-views button[aria-current="true"] { border-color: var(--accent); color: var(--accent); }
+
+.design-sheet-body { min-height: 0; }
+
+.design-sheet tr.total { font-weight: 700; }
+
+@media (max-width: 800px) {
+  .split:has(.design-sheets) { grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.8fr); }
+}
+
+@media (max-width: 640px) {
+  .split:has(.design-sheets) { grid-template-columns: 1fr; }
+  .split.ship-view { grid-template-rows: auto minmax(0, 1fr); }
+  .design-sheets { position: static; height: auto; max-height: none; overflow: visible; }
+  .design-sheet { position: static; max-height: none; overflow: visible; }
+}
+

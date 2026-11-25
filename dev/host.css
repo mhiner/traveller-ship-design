@@ -1,0 +1,262 @@
+/* Host chrome for the dev shipyard. The library stylesheet expects these tokens and controls. */
+
+:root {
+  color-scheme: dark;
+  --bg: #10151b;
+  --panel: #1a232e;
+  --panel-2: #222d3b;
+  --ink: #f3ecdf;
+  --muted: #b3a793;
+  --line: #3a4a5e;
+  --accent: #e2a45a;
+  --accent-ink: #1c1308;
+  --good: #9dcc96;
+  --bad: #ef8b7a;
+  --font: "Avenir Next", "Segoe UI", sans-serif;
+  --display: Palatino, "Palatino Linotype", "Book Antiqua", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, #243246 0%, transparent 55%),
+    var(--bg);
+  color: var(--ink);
+  font: 16px/1.45 var(--font);
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+button, input, select {
+  min-height: 2.4rem;
+}
+
+button {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--accent);
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  background: #0e141b;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
+  width: 100%;
+}
+
+input.tons {
+  width: 5.5rem;
+}
+
+button.edit-field {
+  min-height: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  line-height: 0;
+}
+
+button.edit-field:hover {
+  color: var(--accent);
+}
+button.edit-field svg {
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+h1, h2, details.panel > summary {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  margin: 0 0 0.75rem;
+}
+
+.shell {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 1rem 1.25rem 1.5rem;
+}
+
+.dev-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dev-bar h1 {
+  margin: 0;
+}
+.dev-bar .meta {
+  margin: 0;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+details.panel > summary {
+  cursor: pointer;
+}
+label {
+  display: grid;
+  gap: 0.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+label > span {
+  white-space: nowrap;
+}
+label.check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.stateroom-line {
+  flex-wrap: nowrap;
+}
+.stateroom-line label.check {
+  width: auto;
+  white-space: nowrap;
+}
+.stateroom-line input {
+  width: 3.5rem;
+  flex: 0 0 auto;
+}
+
+label.file-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.4rem;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  color: var(--ink);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+label.file-button:hover {
+  border-color: var(--accent);
+}
+label.file-button:has(input:disabled) {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+label.file-button:has(input:disabled):hover {
+  border-color: var(--line);
+}
+label.file-button input {
+  display: none;
+}
+
+.list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.list button {
+  text-align: left;
+  width: 100%;
+}
+.list button[aria-current="true"],
+table button[aria-current="true"] {
+  border-color: var(--accent);
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.error {
+  color: var(--bad);
+  margin: 0.5rem 0;
+}
+.warning {
+  color: var(--accent);
+  margin: 0.5rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+th, td {
+  text-align: left;
+  padding: 0.4rem 0.45rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+details {
+  margin-top: 0.5rem;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1rem;
+  align-items: start;
+}
+.split > div {
+  min-width: 0;
+}
+
+@media (max-width: 800px) {
+  .split:has(.design-sheets) {
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.8fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .split:has(.design-sheets) {
+    grid-template-columns: 1fr;
+  }
+  .dev-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
